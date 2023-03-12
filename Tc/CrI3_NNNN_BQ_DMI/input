@@ -1,0 +1,101 @@
+#------------------------------------------
+# Sample vampire input file to perform
+# benchmark calculation for v6+
+#
+#------------------------------------------
+
+#------------------------------------------
+# Creation attributes:
+#------------------------------------------
+create:crystal-structure=honeycomb
+
+create:periodic-boundaries-x
+create:periodic-boundaries-y
+#create:periodic-boundaries-z
+
+#------------------------------------------
+# System Dimensions:
+#------------------------------------------
+dimensions:unit-cell-size = 0.7 !nm
+dimensions:system-size-x = 50 !nm
+dimensions:system-size-y = 50 !nm
+dimensions:system-size-z = 0.6 !nm
+
+#exchange:interaction-range = 1.3 #in units of unit-cell-size   
+#exchange:function = shell #will only include 3 NN (as def in the material file)
+
+#------------------------------------------
+# Material Files:
+#------------------------------------------
+material:file = CrI3-Scaled.mat #-notscaled-withS.mat
+material:unit-cell-file = CrI3-Scaled-NoFactor2-DMI0Deg.ucf #scaled with factor 2 and S factor
+#------------------------------------------
+# Simulation attributes:
+#------------------------------------------
+#sim:equilibration-temperature=0.0001 
+#sim:preconditioning-steps = 1000
+
+sim:minimum-temperature=0.0
+sim:maximum-temperature=60.0
+sim:temperature-increment=0.2
+
+sim:equilibration-time-steps=50000
+sim:loop-time-steps=50000
+#sim:time-steps-increment=100
+#sim:total-time-steps=100000
+#sim:loop-time-steps=100
+sim:time-step=0.1 !fs
+
+sim:applied-field-strength=0.0
+
+#------------------------------------------
+# Program and integrator details
+#------------------------------------------
+sim:program=curie-temperature
+sim:integrator=monte-carlo #llg-heun
+
+#------------------------------------------
+# data output
+#------------------------------------------
+
+output:real-time
+output:temperature
+output:mean-magnetisation
+output:mean-susceptibility
+output:output-rate=1
+#config:atoms
+#config:atoms-output-rate=1 #multiple of increment!!
+
+
+
+
+
+
+
+#------------------------------------------
+# Simulation attributes:
+#------------------------------------------
+#sim:minimum-temperature=0.0
+#sim:maximum-temperature=100.0
+#sim:temperature-increment = 5.0
+#sim:time-steps-increment=1
+
+#sim:equilibration-time-steps = 10000
+#sim:loop-time-steps=10000
+
+#------------------------------------------
+# Program and integrator details
+#------------------------------------------
+#sim:program = curie-temperature
+#sim:integrator = llg-heun
+
+#------------------------------------------
+# data output
+#------------------------------------------
+#output:time-steps
+#output:temperature
+#output:mean-magnetisation
+#output:magnetisation
+#output:mean-susceptibility
+#output:output-rate = 1
+
